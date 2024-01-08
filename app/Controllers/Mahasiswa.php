@@ -99,7 +99,16 @@ class Mahasiswa extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getRawInput();
+
+        if (!$this->model->update($id, $data)) {
+            return $this->fail($this->model->errors());
+        }
+
+        return $this->respond([
+            'status' => 'success',
+            'message' => 'mahasiswa updated'
+        ], 200);
     }
 
     /**

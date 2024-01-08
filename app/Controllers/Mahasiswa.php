@@ -32,7 +32,18 @@ class Mahasiswa extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $record = $this->model->find($id);
+
+        if (!$record) {
+            return $this->failNotFound(sprintf('mahasiswa with id %d not found', $id));
+        }
+
+        return $this->respond([
+            'status' => 'success',
+            'data' => [
+                'mahasiswa' => $record
+            ]
+        ]);
     }
 
     /**

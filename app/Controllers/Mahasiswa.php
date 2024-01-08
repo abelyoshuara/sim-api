@@ -118,6 +118,15 @@ class Mahasiswa extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->model->delete($id);
+
+        if ($this->model->db->affectedRows() === 0) {
+            return $this->failNotFound(sprintf('mahasiswa with id %d not found', $id));
+        }
+
+        return $this->respondDeleted([
+            'status' => 'success',
+            'message' => 'mahasiswa deleted'
+        ]);
     }
 }

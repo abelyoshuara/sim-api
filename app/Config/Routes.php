@@ -6,4 +6,5 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->resource('mahasiswa');
+$routes->resource('mahasiswa', ['except' => 'new,edit']);
+$routes->resource('photos', ['only' => ['show']]);

@@ -101,6 +101,10 @@ class Mahasiswa extends ResourceController
     {
         $data = $this->request->getRawInput();
 
+        if (!$this->model->find($id)) {
+            return $this->failNotFound(sprintf('mahasiswa with id %d not found', $id));
+        }
+
         if (!$this->model->update($id, $data)) {
             return $this->fail($this->model->errors());
         }

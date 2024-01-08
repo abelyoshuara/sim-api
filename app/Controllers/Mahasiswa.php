@@ -52,7 +52,23 @@ class Mahasiswa extends ResourceController
      */
     public function create()
     {
-        // 
+        $data = $this->request->getPost();
+
+        if ($this->request->getFile('foto')) {
+            $file = $this->request->getFile('foto');
+            $newName = $file->getRandomName();
+            $file->move(WRITEPATH . 'uploads/mahasiswa', $newName);
+            $data['foto'] = $newName;
+        }
+
+        if (!$this->model->save($data)) {
+            return $this->fail($this->model->errors());
+        }
+
+        return $this->respondCreated([
+            'status' => 'success',
+            'message' => 'mahasiswa created'
+        ]);
     }
 
     /**

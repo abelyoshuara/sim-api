@@ -25,7 +25,8 @@ class MahasiswaModel extends Model
     protected $validationRules      = [
         'nama' => 'required|alpha_space',
         'nim' => 'required|is_unique[mahasiswa.nim,id,{id}]',
-        'jurusan' => 'required'
+        'jurusan' => 'required',
+        // 'foto' => 'uploaded[foto]|mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]'
     ];
     // protected $validationMessages   = [];
     // protected $skipValidation       = false;

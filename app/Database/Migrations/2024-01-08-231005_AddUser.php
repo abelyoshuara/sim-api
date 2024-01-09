@@ -15,6 +15,10 @@ class AddUser extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'email' => [
                 'type' => 'VARCHAR',
                 'unique' => true,

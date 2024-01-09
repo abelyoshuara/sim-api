@@ -11,5 +11,5 @@ $routes->group("api", function ($routes) {
   $routes->get('users/me', 'Auth::me');
 
   $routes->resource('mahasiswa', ['except' => 'new,edit', 'filter' => 'auth']);
-  $routes->resource('photos', ['only' => ['show']]);
+  $routes->resource('photos', ['only' => ['show'], 'filter' => 'auth']);
 });
